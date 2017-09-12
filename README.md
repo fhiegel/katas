@@ -6,7 +6,15 @@ _Simply create a calculator as you used at school_
 - Allow the method to handle any amount of number and "+" operations
 - Allow the method to handle the "subtract" operation.
 - Allow the method to handle the "multiply" operation.
+
+## Handle multiples operations
 - Allow the method to compose the different kind of operation. Keep in mind the priority of the different operations.
+
+## Handle successive operations
+- Allow the method to handle two batches of operation separated by a space
+- Example :
+    - `1 2` will return `1 2`
+    - `1+2 3+4` will return `3 7`
 
 ## Handle a new operation 
 - Allow the method to handle the "^" operation, witch returns "first power second".
