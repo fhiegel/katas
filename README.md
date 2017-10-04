@@ -2,7 +2,7 @@
 _Simply create a calculator as you used at school_
 
 ## Handle unique simple operations
-- Create a simple String calculator with a method `int calc(String)`. The method can take two numbers separated by "+", and return their sum.
+- Create a simple String calculator with a method `String calc(String)`. The method can take two numbers separated by "+", and return their sum.
 - Allow the method to handle any amount of number and "+" operations
 - Allow the method to handle the "subtract" operation.
 - Allow the method to handle the "multiply" operation.
