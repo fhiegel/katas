@@ -1,5 +1,7 @@
 package calculator.mine.v4;
 
+import calculator.mine.v4.expression.Expression;
+
 public class ExpressionToken {
     
     private String token;

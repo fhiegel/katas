@@ -4,6 +4,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import calculator.mine.v4.expression.Expression;
+
 public class ExpressionCompositeParser {
 
     private Map<String, ExpressionParser> expressionToEvaluation= new LinkedHashMap<>();
@@ -14,7 +16,7 @@ public class ExpressionCompositeParser {
     }
 
     public String pattern() {
-        return "(" + String.join(")|(", expressionToEvaluation.keySet()) + ")";
+        return String.join("|", expressionToEvaluation.keySet());
     }
 
     public ExpressionParser find(String expression) {

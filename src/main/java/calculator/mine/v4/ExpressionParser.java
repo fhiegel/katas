@@ -2,6 +2,8 @@ package calculator.mine.v4;
 
 import java.util.function.Function;
 
+import calculator.mine.v4.expression.Expression;
+
 public class ExpressionParser {
 
     private String pattern;

@@ -7,13 +7,15 @@ import org.junit.Test;
 
 import calculator.mine.v4.ExpressionToken;
 import calculator.mine.v4.ExpressionTokenizer;
+import calculator.mine.v4.expression.AddOperation;
+import calculator.mine.v4.expression.IntegerExpression;
 
 public class ExpressionTokenizerTest {
 
     @Test
     public void should_have_single_token() throws Exception {
         // Given
-        ExpressionTokenizer tokenizer = new ExpressionTokenizer("1");
+        ExpressionTokenizer tokenizer = tokenize("1");
 
         // When
         boolean hasToken = tokenizer.hasToken();
@@ -25,7 +27,7 @@ public class ExpressionTokenizerTest {
     @Test
     public void should_get_single_token() throws Exception {
         // Given
-        ExpressionTokenizer tokenizer = new ExpressionTokenizer("1");
+        ExpressionTokenizer tokenizer = tokenize("1");
         
         // When
         ExpressionToken token = tokenizer.nextToken();
@@ -38,7 +40,7 @@ public class ExpressionTokenizerTest {
     @Test
     public void should_get_next_empties_tokenizer() throws Exception {
         // Given
-        ExpressionTokenizer tokenizer = new ExpressionTokenizer("1");
+        ExpressionTokenizer tokenizer = tokenize("1");
         assumeTrue(tokenizer.hasToken());
         
         // When
@@ -52,7 +54,7 @@ public class ExpressionTokenizerTest {
     @Test
     public void should_get_multiple_tokens() throws Exception {
         // Given
-        ExpressionTokenizer tokenizer = new ExpressionTokenizer("1+2");
+        ExpressionTokenizer tokenizer = tokenize("1+2");
         
         // When
         ExpressionToken first = tokenizer.nextToken();
@@ -63,6 +65,16 @@ public class ExpressionTokenizerTest {
         assertThat(first.toString()).isEqualTo("1");
         assertThat(second.toString()).isEqualTo("+");
         assertThat(third.toString()).isEqualTo("2");
+    }
+    
+    private ExpressionTokenizer tokenize(String input) {
+        return new ExpressionTokenizer(parser(), input);
+    }
+    
+    public ExpressionCompositeParser parser() {
+        return new ExpressionCompositeParser()
+                .when("\\d+", e -> new IntegerExpression(Integer.valueOf(e)))
+                .when("[+]", e -> AddOperation.EMPTY);
     }
 
 }

@@ -1,17 +1,17 @@
-package calculator.mine.v4;
+package calculator.mine.v4.expression;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.function.Function;
 
 class ExpressionDispatcher {
 
-    private final Map<Class<? extends Expression>, Function<Expression, ? extends Expression>> expressionToEvaluation = new HashMap<>();
+    private final Map<Class<? extends Expression>, Function<Expression, ? extends Expression>> expressionToEvaluation = new LinkedHashMap<>();
     private final Expression origin;
 
-    private Function<Expression, ? extends Expression> defaultEvaluation = expression -> {
-        throw new IllegalArgumentException(unsupportedExpressionMessage(expression));
-    };
+    private Function<Expression, ? extends Expression> defaultEvaluation = expression -> new TextExpression(unsupportedExpressionMessage(expression));
 
     public ExpressionDispatcher(Expression origin) {
         this.origin = origin;
@@ -29,7 +29,18 @@ class ExpressionDispatcher {
     }
 
     public Expression dispatch(Expression receiver) {
-        return expressionToEvaluation.getOrDefault(receiver.getClass(), defaultEvaluation).apply(receiver);
+        Function<Expression, ? extends Expression> expressionMapper = resolveMapper(receiver);
+        return expressionMapper.apply(receiver);
+    }
+
+    private Function<Expression, ? extends Expression> resolveMapper(Expression receiver) {
+        Optional<Function<Expression, ? extends Expression>> expressionMapper = expressionToEvaluation
+                .entrySet()
+                .stream()
+                .filter(entry -> entry.getKey().isAssignableFrom(receiver.getClass()))
+                .findFirst()
+                .map(Entry::getValue);
+        return expressionMapper.orElse(defaultEvaluation);
     }
 
     private String unsupportedExpressionMessage(Expression expression) {

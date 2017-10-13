@@ -1,4 +1,4 @@
-package calculator.mine.v4;
+package calculator.mine.v4.expression;
 
 public class TextExpression extends ValuedExpression<String> {
 
@@ -9,8 +9,9 @@ public class TextExpression extends ValuedExpression<String> {
     }
 
     @Override
-    protected ExpressionDispatcher resolve(ExpressionDispatcher dispatcher) {
+    protected ExpressionDispatcher configure(ExpressionDispatcher dispatcher) {
         return dispatcher
+                .when(BoldTextExpression.class, bold -> bold.wrapText(this))
                 .when(TextExpression.class, this::concat)
                 .when(ValuedExpression.class, this::concat);
     }

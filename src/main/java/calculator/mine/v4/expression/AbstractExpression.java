@@ -1,28 +1,29 @@
-package calculator.mine.v4;
-
-import java.util.function.Function;
+package calculator.mine.v4.expression;
 
 public abstract class AbstractExpression implements Expression {
 
     public final Expression then(Expression after) {
         ExpressionDispatcher dispatcher = defaultDispatcher();
-        dispatcher = resolve(dispatcher);
+        dispatcher = configure(dispatcher);
         return dispatcher.dispatch(after);
     }
 
-    protected ExpressionDispatcher resolve(ExpressionDispatcher dispatcher) {
+    protected ExpressionDispatcher configure(ExpressionDispatcher dispatcher) {
         return dispatcher;
     }
 
     private ExpressionDispatcher defaultDispatcher() {
         return new ExpressionDispatcher(this)
-                .when(Expression.class, Function.identity())
                 .when(NeutralExpression.class, neutral -> this);
+    }
+
+    protected final String printDelegate(Expression delegate) {
+        return delegate != null ? delegate.print() : "null";
     }
 
     @Override
     public String toString() {
         return getClass().getSimpleName() + "{" + print() + "}";
     }
-    
+
 }

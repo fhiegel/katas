@@ -9,15 +9,8 @@ public class ExpressionTokenizer {
 
     private Queue<ExpressionToken> expressionTokens = new LinkedList<>();
 
-    public ExpressionTokenizer(String expression) {
-        this(new ExpressionCompositeParser()
-                .when("\\d+", e -> new IntegerExpression(Integer.valueOf(e)))
-                .when("[+]", e -> new AddOperation())
-                , expression);
-    }
-
     public ExpressionTokenizer(ExpressionCompositeParser parser, String expression) {
-        expressionTokens = tokenize(parser, expression);
+        this.expressionTokens = tokenize(parser, expression);
     }
 
     private Queue<ExpressionToken> tokenize(ExpressionCompositeParser parser, String expression) {

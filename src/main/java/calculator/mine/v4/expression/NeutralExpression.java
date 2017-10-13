@@ -1,4 +1,4 @@
-package calculator.mine.v4;
+package calculator.mine.v4.expression;
 
 final class NeutralExpression implements Expression {
     NeutralExpression() {
@@ -24,5 +24,5 @@ final class NeutralExpression implements Expression {
     public String print() {
         return "<neutral>";
     }
-
+    
 }
