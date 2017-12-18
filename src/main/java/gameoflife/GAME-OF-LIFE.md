@@ -42,4 +42,3 @@ Generation 2:
 ```
 The input format is similar to that in Kata `Minesweeper` , and is easily parsed in most 
 languages.
-
