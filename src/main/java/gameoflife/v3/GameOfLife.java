@@ -1,14 +1,16 @@
 package gameoflife.v3;
 
 
+import gameoflife.v3.cartesian.CartesianPosition;
+
 import java.util.Collection;
 import java.util.stream.Collectors;
 
 public class GameOfLife {
 
-    final CartesianBoard board;
+    final Board board;
 
-    public GameOfLife(CartesianBoard board) {
+    public GameOfLife(Board board) {
         this.board = board;
     }
 
@@ -21,9 +23,9 @@ public class GameOfLife {
     }
 
     public GameOfLife nextGeneration() {
-        CartesianBoard newBoard = new CartesianBoard(board.maxX(), board.maxY());
+        Board newBoard = board.emptyCopy();
 
-        for (CartesianPosition position : board.position()) {
+        for (Position position : board.position()) {
             Cell cell = nextGenerationCell(position);
             newBoard.add(position, cell);
         }
@@ -31,7 +33,7 @@ public class GameOfLife {
         return new GameOfLife(newBoard);
     }
 
-    private Cell nextGenerationCell(CartesianPosition position) {
+    private Cell nextGenerationCell(Position position) {
         Cell cell = board.get(position);
         Collection<Cell> neighbours = board.getNeighbours(position)
                 .stream()

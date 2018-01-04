@@ -1,5 +1,10 @@
-package gameoflife.v3;
+package gameoflife.v3.cartesian;
 
+import gameoflife.v3.Cell;
+import gameoflife.v3.GameOfLifeTestUtils;
+import gameoflife.v3.cartesian.CartesianBoard;
+import gameoflife.v3.cartesian.CartesianBoardRenderer;
+import gameoflife.v3.cartesian.CartesianPosition;
 import org.junit.Test;
 
 import java.net.URL;
@@ -8,7 +13,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
-import static gameoflife.v3.CartesianBoardRenderer.LINE;
+import static gameoflife.v3.cartesian.CartesianBoardRenderer.LINE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CartesianBoardTest {
@@ -54,13 +59,7 @@ public class CartesianBoardTest {
     }
 
     String getFile(String fileName) {
-        try {
-            URL url = getClass().getResource(fileName);
-            Path path = Paths.get(url.toURI());
-            return Files.readAllLines(path).stream().collect(Collectors.joining(LINE));
-        } catch (Exception e) {
-            throw new RuntimeException("Cannot read file" + fileName, e);
-        }
+        return GameOfLifeTestUtils.getFile(getClass(), fileName);
     }
 
 }

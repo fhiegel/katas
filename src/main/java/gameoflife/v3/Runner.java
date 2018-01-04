@@ -1,13 +1,15 @@
 package gameoflife.v3;
 
-import gameoflife.v3.*;
+import gameoflife.v3.cartesian.CartesianBoard;
+import gameoflife.v3.cartesian.CartesianBoardRenderer;
+import gameoflife.v3.cartesian.CartesianPosition;
 
 import java.util.Random;
 
 public class Runner {
 
     public static void main(String... arg) {
-        CartesianBoard board = initializeBoard(20, 20, 30);
+        Board board = initializeBoard(20, 20, 30);
         GameOfLife gameOfLife = new GameOfLife(board);
         CartesianBoardRenderer renderer = new CartesianBoardRenderer();
 

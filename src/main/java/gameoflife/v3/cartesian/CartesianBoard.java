@@ -1,19 +1,18 @@
-package gameoflife.v3;
+package gameoflife.v3.cartesian;
 
-import java.nio.file.Files;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import gameoflife.v3.Board;
+import gameoflife.v3.Cell;
+import gameoflife.v3.Position;
+
+import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static gameoflife.v3.Cell.ALIVE;
 import static gameoflife.v3.Cell.DEAD;
 
-public class CartesianBoard {
+public class CartesianBoard implements Board {
 
-    private Map<CartesianPosition, Cell> contentByPosition = new HashMap<>();
+    private Map<Position, Cell> contentByPosition = new HashMap<>();
 
     private CartesianBoard() {
     }
@@ -31,23 +30,32 @@ public class CartesianBoard {
         }
     }
 
-    public void add(CartesianPosition position, Cell content) {
+    @Override
+    public void add(Position position, Cell content) {
         contentByPosition.put(position, content);
     }
 
-    public Cell get(CartesianPosition position) {
+    @Override
+    public Cell get(Position position) {
         return contentByPosition.get(position);
     }
 
-    public Collection<CartesianPosition> position() {
+    @Override
+    public Collection<Position> position() {
         return contentByPosition.keySet();
     }
 
-    public Collection<CartesianPosition> getNeighbours(CartesianPosition position) {
+    @Override
+    public Collection<Position> getNeighbours(Position position) {
         return contentByPosition.keySet()
                 .stream()
                 .filter(position::isNextTo)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Board emptyCopy() {
+        return new CartesianBoard(maxX(), maxY());
     }
 
     public static CartesianBoard parse(String input) {
@@ -67,6 +75,7 @@ public class CartesianBoard {
     public int maxX() {
         return contentByPosition.keySet()
                 .stream()
+                .map(CartesianPosition.class::cast)
                 .map(p -> p.x)
                 .max(Integer::compare)
                 .orElse(0);
@@ -75,6 +84,7 @@ public class CartesianBoard {
     public int maxY() {
         return contentByPosition.keySet()
                 .stream()
+                .map(CartesianPosition.class::cast)
                 .map(p -> p.y)
                 .max(Integer::compare)
                 .orElse(0);

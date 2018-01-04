@@ -1,5 +1,6 @@
-package gameoflife.v3;
+package gameoflife.v3.cartesian;
 
+import gameoflife.v3.Position;
 import org.junit.Test;
 
 import java.util.Collection;
@@ -12,7 +13,7 @@ public class CartesianPositionTest {
     public void should_get_all_neighbours() {
         CartesianBoard board = new CartesianBoard(4, 4);
 
-        Collection<CartesianPosition> neighbours = board.getNeighbours(CartesianPosition.of(2, 1));
+        Collection<Position> neighbours = board.getNeighbours(CartesianPosition.of(2, 1));
 
         assertThat(neighbours).containsExactlyInAnyOrder(
                 CartesianPosition.of(1, 0),

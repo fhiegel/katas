@@ -1,5 +1,8 @@
 package gameoflife.v3;
 
+import gameoflife.v3.cartesian.CartesianBoard;
+import gameoflife.v3.cartesian.CartesianBoardRenderer;
+import gameoflife.v3.cartesian.CartesianPosition;
 import org.junit.Test;
 
 import java.net.URL;
@@ -8,7 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
-import static gameoflife.v3.CartesianBoardRenderer.LINE;
+import static gameoflife.v3.cartesian.CartesianBoardRenderer.LINE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameOfLifeTest {
@@ -82,12 +85,12 @@ public class GameOfLifeTest {
 
     @Test
     public void whatever() {
-        CartesianBoard board = parseFromFile("10x10_with_cells");
+        Board board = parseFromFile("cartesian/10x10_with_cells");
         GameOfLife generation = new GameOfLife(board);
 
         generation = generation.nextGeneration();
 
-        assertBoardEqualsFile(generation.board, "10x10_with_cells_n1");
+        assertBoardEqualsFile((CartesianBoard) generation.board, "cartesian/10x10_with_cells_n1");
     }
 
     //
@@ -100,13 +103,7 @@ public class GameOfLifeTest {
 
 
     String getFile(String fileName) {
-        try {
-            URL url = getClass().getResource(fileName);
-            Path path = Paths.get(url.toURI());
-            return Files.readAllLines(path).stream().collect(Collectors.joining(LINE));
-        } catch (Exception e) {
-            throw new RuntimeException("Cannot read file" + fileName, e);
-        }
+        return GameOfLifeTestUtils.getFile(getClass(), fileName);
     }
 
     private void assertBoardEqualsFile(CartesianBoard board, String fileName) {
