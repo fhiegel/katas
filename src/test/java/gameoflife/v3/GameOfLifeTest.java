@@ -3,15 +3,10 @@ package gameoflife.v3;
 import gameoflife.v3.cartesian.CartesianBoard;
 import gameoflife.v3.cartesian.CartesianBoardRenderer;
 import gameoflife.v3.cartesian.CartesianPosition;
+import gameoflife.v3.hexagonal.HexagonalBoard;
+import gameoflife.v3.hexagonal.HexagonalBoardRenderer;
 import org.junit.Test;
 
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.stream.Collectors;
-
-import static gameoflife.v3.cartesian.CartesianBoardRenderer.LINE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameOfLifeTest {
@@ -84,13 +79,25 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void whatever() {
+    public void should_parse_and_compute_cartesian_game_of_life() {
         Board board = parseFromFile("cartesian/10x10_with_cells");
         GameOfLife generation = new GameOfLife(board);
 
         generation = generation.nextGeneration();
 
         assertBoardEqualsFile((CartesianBoard) generation.board, "cartesian/10x10_with_cells_n1");
+    }
+
+    @Test
+    public void should_parse_and_compute_hexagonal_game_of_life() {
+        Board board = HexagonalBoard.parse(getFile("hexagonal/10r_with_cells"));
+        GameOfLife generation = new GameOfLife(board);
+
+        generation = generation.nextGeneration();
+        board = generation.board;
+
+        String renderedBoard = new HexagonalBoardRenderer().render(board);
+        assertThat(renderedBoard).isEqualTo(getFile("hexagonal/10r_with_cells_n1"));
     }
 
     //

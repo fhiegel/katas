@@ -25,7 +25,7 @@ public class GameOfLife {
     public GameOfLife nextGeneration() {
         Board newBoard = board.emptyCopy();
 
-        for (Position position : board.position()) {
+        for (Position position : board.positions()) {
             Cell cell = nextGenerationCell(position);
             newBoard.add(position, cell);
         }

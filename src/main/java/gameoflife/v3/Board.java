@@ -8,7 +8,7 @@ public interface Board {
 
     Cell get(Position position);
 
-    Collection<Position> position();
+    Collection<Position> positions();
 
     Collection<Position> getNeighbours(Position position);
 

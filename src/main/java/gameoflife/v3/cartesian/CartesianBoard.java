@@ -41,7 +41,7 @@ public class CartesianBoard implements Board {
     }
 
     @Override
-    public Collection<Position> position() {
+    public Collection<Position> positions() {
         return contentByPosition.keySet();
     }
 
