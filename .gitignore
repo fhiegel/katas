@@ -1,0 +1,12 @@
+# Eclipse
+.project
+/target/
+.classpath
+.settings/*
+
+# IntelliJ
+.idea
+*.iml
+
+# MkDocs
+site

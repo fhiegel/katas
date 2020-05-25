@@ -1,0 +1,19 @@
+sudo: false
+language: python
+env:
+  global:
+    - SITE_URL: https://fhiegel.github.io/katas
+    - GH_USER_NAME: 'Fabien HIEGEL'
+    - GH_USER_EMAIL: fabien.hiegel@gmail.com
+    - GH_REF: github.com/fhiegel/katas.git
+    - secure: "qkEO6EUqGP+CzwVWkVTjP4ts2I4/tES+33sHboWpZdHbmP0ny+OwXQvjV+3J93GXGe6WZD9UIFe2zlk+P7Ux8v2S3jvV6n46UbcbaE7c1zsnimUQL1ENOpR6TNsMTn+bblbY67/ZELE61+gVwSqaR1QL8mR3BEWt8YdAWOpE/a0In9qDjvMtfS5kiAvPiCC2tJ6MTf8T/sAC1DnldlYzDEDcldym7pkfyC0kQZykS/oa2U2WBTGoHOMC7sLUiypQv9bcVQFkf38NpH1O7pLSiHJsVCe/9FF/bLTi52IcB4xSgpuIQM5tjrGTlIuvz1bRirYu7CL48vVBVizLKwXLQuxYTaZ2LaYWTmk07uCjdqxWBjaiDdjNKYzQjNO1XrtS+j+5xlja0LA20nz1VZ3pjjSzNzxTSFItx1bnQZCACdQjocOQNLJE2pPjiFQYYck+rGr5BNkyDhxHPa0wB9TD1lOhBXegbw2GoTD+GLd4yJyI+g0La/JN492Nfs7QCDWMYoOJEplF/EznnLO+gbZ44Ucfs14phBmkC/J0hFCYtxrqzV4yNC+lpOm4e0099pMlhapDfJYyeNIXc5J0gR4hsYhZbpNqbBprUCRg+udLU5lU2WsIEaFNkGeJPL+3tNsCXXHka6i0kZabHHLzoK+Aw27EExQpNP3/lDhkMpxNdCs="
+install:
+- pip install mkdocs
+script:
+- git clean -f -d -x
+after_success:
+  - git config user.name "${GH_USER_NAME}";
+  - git config user.email "${GH_USER_EMAIL}";
+  - git remote add gh-remote "https://${GH_TOKEN}@${GH_REF}";
+  - git fetch gh-remote && git fetch gh-token gh-pages:gh-pages;
+  - mkdocs gh-deploy -v --clean --remote-name gh-remote;

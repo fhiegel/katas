@@ -1,0 +1,15 @@
+site_name: Katas
+site_url: https://fhiegel.github.io/katas
+site_description: Reposotory of katas.
+
+repo_url: https://github.com/fhiegel/katas
+edit_uri: ""
+
+theme:
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - yaml
+
+nav:
+  - Home: index.md
