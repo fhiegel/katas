@@ -1,7 +1,7 @@
 ---
-title: 'Kata: Quoi & Pourquoi ?'
+title: Katas
 description: >
-  Pour faciliter 
+  S'entrainer pour progresser 
 ---
 # Le Kata : Quoi et pourquoi ? 
 
@@ -40,3 +40,15 @@ Deliberate practice refers to a special type of practice that is purposeful and 
 *[TCR]: Test && Commit || Revert
 *[Pair-Programming]: Programmation en binôme
 [Deliberate Practice]: https://jamesclear.com/deliberate-practice-theory
+<!--
+    
+    🐱‍🥋 TEST 
+    
+    🧩 Serious Game |
+     
+    👨‍🏫 👩‍🏫 Présentation | 💻 Pratique | 🐱‍👤 Kata 🥋
+    
+    ☕ Echanges & Discussions | 👨‍🏫 👩‍🏫 Présentation | 💻 Pratique | 🐱‍👤 Kata
+    
+    🧩 Serious Game | 👨‍🏫 👩‍🏫 Présentation | 💻 🖥️ ⌨ Pratique | ⚙️🛠️⚗️ Outillage | ☕ Echanges & Discussions | 🐱‍👤 🥋  Kata
+    -->
