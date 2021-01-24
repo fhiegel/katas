@@ -9,6 +9,13 @@ template: reveal.html
 
 # Slide 2
 
+Objects or entities should be open for extension, but closed for modification.
+Smells
+Complex switch/Lot of ifs
+High cyclomatic complexity
+Heavy use of polymorphism
+
+
 --
 
 ### Vertical

@@ -9,20 +9,19 @@ Cette formation s'adresser à vous.
 ## Format 
 Présentations + Coding Dojo
 
-
 ## Programme
-cf. déroulé.md
+cf. [Déroulé](deroule)
 
 ## Prérequis
 - Connaitre un langage de programmation (Java, JavaScript, PhP, Ruby)
 - Connaître TDD
-- Connaître ""Simple Design""
-- Connaître ""Clean Code"""
+- Connaître "Simple Design"
+- Connaître "Clean Code"
   
 ## Public cible
 - Développeur Junior, ayant une sensibilité au Clean Code, 
   et rodé aux pratiques XP (TDD, Pair Programming)
-- Développeur Confirmé ayant envie de creuser le sujet"
+- Développeur Confirmé ayant envie de creuser le sujet
   
 ## Durée de la session
 1 journée

@@ -1,5 +1,5 @@
 site_name: Slide template - MKDocs
-site_url: https://fhiegel.github.io/slide-template
+site_url: https://fhiegel.github.io/kata/solid
 site_description: >
   Templates for creating slides into static site generators
 repo_url: https://github.com/fhiegel/slide-template
@@ -7,7 +7,12 @@ repo_url: https://github.com/fhiegel/slide-template
 nav:
   - Home: index.md
   - Slides:
-    - Simple: pitch.md
+    - Intro: slides/intro
+    - Single Responsibility Principle: slides/srp
+    - Open-Close Principle: slides/ocp
+    - Liskov Substitution Principle: slides/lsp
+    - Interface Segregation Principle: slides/isp
+    - Dependency Inversion Principle: slides/dip
 
 theme:
   name: material

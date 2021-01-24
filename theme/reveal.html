@@ -28,7 +28,12 @@
     <section data-markdown
              data-separator="^\n---\n$"
              data-separator-vertical="^\n--\n$"
-             data-notes="^Note:">
+             data-notes="^Note:"
+             {% if page.meta['background-image'] %} data-background-image="{{ page.meta['background-image'] }}" {% endif %}
+             {% if page.meta['background-position'] %} data-background-position="{{ page.meta['background-position'] }}" {% endif %}
+             {% if page.meta['background-opacity'] %} data-background-opacity="{{ page.meta['background-opacity'] }}" {% endif %}
+             {% if page.meta['background-size'] %} data-background-size="{{ page.meta['background-size'] }}" {% endif %}
+    >
       <script type="text/template">
         {{ page.markdown }}
       </script>

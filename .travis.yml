@@ -7,6 +7,10 @@ install:
 script:
   -  mkdocs build
 
+branches:
+  only:
+    - docs
+
 deploy:
   provider: pages:git
   edge: true
