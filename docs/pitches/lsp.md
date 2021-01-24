@@ -1,9 +1,9 @@
 ---
 template: reveal.html
 ---
-# Slides
+# Liskov Substitution Principle
 
-### From Reveal
+### Par la pratique du RPN Calculator
 
 ---
 
